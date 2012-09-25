@@ -22,7 +22,9 @@
 	}
 
 	function load_packages() {
-		$repo_files = scandir(".repositories");
+		$repo_files = array();
+		if(file_exists(".repositories"))
+			$repo_files = scandir(".repositories");
 		$name_indexed_packages = array();
 		foreach($repo_files as $file) {
 			if($file == '.' || $file == '..')
