@@ -56,6 +56,38 @@
 			exit;
 		}
 	}
+	
+	// -- action support --
+	
+	global $_actions;
+	$_actions = array();
+	
+	function register_action($action, $callback) {
+		global $_actions;
+		if(!isset($_actions[$action]))
+			$_actions[$action] = array();
+		$_actions[$action][] = $callback;
+	}
+	
+	function do_action($action, $params = array()) {
+		global $_actions;
+		if(!isset($_actions[$action]))
+			return;
+		foreach($_actions[$action] as $callback)
+			call_user_func_array($callback, $params);
+	}
+	
+	// -- load modules --
+	
+	$modules = array();
+	if(file_exists("modules"))
+		$modules = scandir("modules");
+	foreach($modules as $module) {
+		if($module == '.' || $module == '..')
+			continue;
+		if(file_exists("modules/$module/$module" . "-admin.php"))
+			include("modules/$module/$module" . "-admin.php");
+	}
 
 	// -- MAIN --
 
@@ -65,10 +97,12 @@ mf-admin v0.1
 
 Usage: mf-admin <command> <params>
 Available commands:
-	update - update package list
-	list <package filter> - list packages, if package name starts with <package filter> 
-	install <package> - installs package
+  update - update package list
+  list <pkg filter> - list packages, if package name starts with <pkg filter> 
+  install <package> - installs package
+
 EOF;
+		do_action('help');
 		exit;
 	}
 	
@@ -112,4 +146,6 @@ EOF;
 		unzip("modules/" . $founded_package->name . ".zip", "modules/" . $founded_package->name);
 		unlink("modules/" . $founded_package->name . ".zip");
 	}
+	
+	do_action('commands', array($argv));
 ?>
