@@ -1,14 +1,24 @@
 <?php
 	global $_urls;
 	$_urls = array();
+	
+	// -- load config --
+	$config = array();
+	if(file_exists("config"))
+		$config = scandir("config");
+	foreach($config as $c) {
+		if($c == '.' || $c == '..')
+			continue;
+		if(file_exists("config/$c")) 
+			include("config/$c");
+	}
 
 	function register_url($regexp, $callback) {
 		global $_urls;
 		$_urls[] = array('regexp' => $regexp, 'callback' => $callback);
 	}
-	
+
 	// -- load modules --
-	
 	$modules = array();
 	if(file_exists("modules"))
 		$modules = scandir("modules");
@@ -30,5 +40,5 @@
 			call_user_func_array($url['callback'], $matches);
 			exit;
 		}
-	}
+	}	
 ?>
