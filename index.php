@@ -33,7 +33,9 @@
 	
 	$script_name = basename($_SERVER['SCRIPT_NAME']);
 	$path_info = substr($_SERVER["PATH_INFO"], 1);
-	
+
+	session_start();
+
 	foreach($_urls as $url) {
 		if(preg_match($url['regexp'], $path_info, $matches)) {
 			array_shift($matches);

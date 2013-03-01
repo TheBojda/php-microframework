@@ -148,8 +148,10 @@ EOF;
 		
 		@mkdir("config");
 		$install_script = "modules/" . $founded_package->name . '/' . $founded_package->name . '.install.php';
-		if(file_exists($install_script))
+		if(file_exists($install_script)) {
 			include($install_script);
+			unlink($install_script);
+		}
 	}
 	
 	do_action('commands', array($argv));
