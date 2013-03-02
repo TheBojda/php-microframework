@@ -1,0 +1,3 @@
+#!/bin/sh
+
+php mf-admin.php $@
