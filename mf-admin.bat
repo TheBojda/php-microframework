@@ -1,1 +1,0 @@
-@..\..\php\php-cgi.exe -q mf-admin.php %*

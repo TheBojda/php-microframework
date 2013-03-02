@@ -1,0 +1,26 @@
+[
+	{
+		"name":"microtemplate",
+		"description":"Minimalistic template engine for PHP",
+		"url":"https:\/\/raw.github.com\/TheBojda\/php-microframework\/master\/php-microtemplate\/php-microtemplate.zip",
+		"dependencies":[]
+	},
+	{
+		"name":"bootstrap",
+		"description":"Twitter bootstrap",
+		"url":"https:\/\/raw.github.com\/TheBojda\/php-microframework\/master\/bootstrap\/bootstrap.zip",
+		"dependencies":[]
+	},
+	{
+		"name":"simple-auth",
+		"description":"Simple auth",
+		"url":"https:\/\/raw.github.com\/TheBojda\/php-microframework\/master\/simple-auth\/simple-auth.zip",
+		"dependencies":[]
+	},
+	{
+		"name":"adodb-lite",
+		"description":"ADOdb Lite",
+		"url":"https:\/\/raw.github.com\/TheBojda\/php-microframework\/master\/adodb-lite\/adodb-lite.zip",
+		"dependencies":[]
+	}
+]

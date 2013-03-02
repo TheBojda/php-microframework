@@ -19,6 +19,7 @@
 	}
 
 	// -- load modules --
+	ob_start();
 	$modules = array();
 	if(file_exists("modules"))
 		$modules = scandir("modules");
@@ -28,6 +29,7 @@
 		if(file_exists("modules/$module/$module" . ".php"))
 			include("modules/$module/$module" . ".php");
 	}
+	ob_end_clean();
 		
 	// -- MAIN --
 	
