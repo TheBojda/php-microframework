@@ -13,5 +13,5 @@ unzip php-microframework.zip
 
 ./mf-admin list
 
-./mf-admin install <package>
+./mf-admin install _package_
 

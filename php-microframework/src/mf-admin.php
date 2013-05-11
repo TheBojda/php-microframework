@@ -117,7 +117,7 @@ EOF;
 	if($argv[1] == 'list') {
 		$packages = load_packages();
 		foreach($packages as $package) {
-			if($argv[2])
+			if(isset($argv[2]))
 				if(!startsWith($package->name, $argv[2]))
 					continue;
 			echo $package->name . " - " . $package->description . "\n";
